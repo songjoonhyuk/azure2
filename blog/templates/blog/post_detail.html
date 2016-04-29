@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1> {{ post.title }} </h1>
+
+<hr>
+{{ post.content }}
+<hr>
+
+<img src = "{{post.image.url}}"/>
+<hr>
+
+<div class="fb-comments" data-href="http://songazure.azurewebsites.net" data-numposts="5">test2</div>
+
+<a href="{% url "blog.views.post_list" %}"> 글 목록으로 </a>
+
+
+
+<div id="fb-root"></div>
+
+{% endblock %}
