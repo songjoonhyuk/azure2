@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf import settings
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.http import HttpResponse
@@ -28,8 +28,7 @@ def hello(request):
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$' , hello),
-    url(r'^blog/$', 'blog.views.post_list'),
-    url(r'^blog/(?P<pk>\d+)/$', 'blog.views.post_detail', name='post_detail'),
+    url(r'^blog/', include('blog.urls', namespace='blog')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
